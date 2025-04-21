@@ -51,14 +51,15 @@
     }
 
     .hero h2 {
-      position: absolute;
-      font-size: 3rem;
-      margin-top: 2rem;
-      text-shadow: 100px 100px 200px rgba(0, 0, 0, 0.7);
-      top: 12rem;
-      right: 50rem 
-       
+  position: absolute;
+  font-size: 3rem;
+  top: 12rem;
+  left: 50%;
+  transform: translateX(-50%);
+  color: #fff;
+  text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.7);
     }
+
 
     .hero a.button {
       display: inline-block;
@@ -119,6 +120,12 @@
       
     }
 
+    a.menu-item {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+    }
+
     footer {
       text-align: center;
       padding: 2rem;
@@ -165,7 +172,7 @@
 
   <section id="menu">
     <h3>Our Menu</h3>
-    <div class="menu-item">☕ Coffee</div>
+    <a href="coffee.html" class="menu-item">☕ Coffee </a>
     <div class="menu-item">🍵 Tea</div>
     <div class="menu-item">🍪 Cookies</div>
     <div class="menu-item">🍰 Cheescakes</div>

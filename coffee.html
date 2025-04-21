@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Coffee Menu | SilentCafé</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&family=Quicksand&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Quicksand', sans-serif;
+      background: url('https://cdn.pixabay.com/photo/2022/03/03/15/40/coffee-7045578_1280.png') no-repeat center center/cover;
+      height: 100vh;
+      overflow: hidden;
+      color: #333;
+    }
+
+    .menu-container {
+      display: flex;
+      height: 100vh;
+      backdrop-filter: blur(8px);
+    }
+
+    .sidebar {
+      width: 250px;
+      background: rgba(200, 200, 200, 0.6);
+      padding: 2rem;
+      box-shadow: 4px 0 10px rgba(0,0,0,0.2);
+    }
+
+    .coffee-item {
+      font-size: 1.2rem;
+      margin: 1rem 0;
+      cursor: pointer;
+      padding: 0.5rem 0;
+      transition: all 0.3s ease;
+      border-bottom: 1px solid #aaa;
+    }
+
+    .coffee-item:hover {
+      color: #5E8B7E;
+      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+    }
+
+    #coffee-info {
+      position: absolute;
+      top: 2rem;
+      right: 2rem;
+      display: flex;
+      align-items: center;
+      width: 60%;
+      max-width: 600px;
+      background: rgba(255, 255, 255, 0.85);
+      backdrop-filter: blur(10px);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+      border-radius: 1rem;
+      padding: 2rem;
+      opacity: 0;
+      pointer-events: none;
+      transform: translateY(20px);
+      transition: all 0.4s ease-in-out;
+      z-index: 5;
+    }
+
+    #coffee-info.show {
+      opacity: 1;
+      pointer-events: auto;
+      transform: translateY(0);
+    }
+
+    #coffee-info img {
+      width: 100px;
+      height: 100px;
+      object-fit: cover;
+      margin-right: 2rem;
+      border-radius: 1rem;
+    }
+
+    #coffee-info h4 {
+      margin-top: 0;
+      font-family: 'Playfair Display', serif;
+    }
+
+    #coffee-info p {
+      font-size: 0.95rem;
+      color: #333;
+    }
+
+    #coffee-info .close-btn {
+      position: absolute;
+      top: 0.7rem;
+      right: 1rem;
+      font-size: 1.4rem;
+      cursor: pointer;
+      color: #444;
+      font-weight: bold;
+    }
+
+    #coffee-blend-info {
+      position: static;
+      top: 50%;
+      right: 50%;
+    }
+
+  </style>
+</head>
+<body>
+  <div class="menu-container">
+    <div class="sidebar">
+      <div class="coffee-item" onclick="showCoffee('Espresso', 'Strong & Bold', 'Classic Italian-style espresso. $3.00', 'https://mycoffee.cz/storage/blog/img_0953.jpg')">Espresso</div>
+      <div class="coffee-item" onclick="showCoffee('Cappuccino', 'Smooth & Frothy', 'Espresso with steamed milk and foam. $4.50', 'https://cdn.pixabay.com/photo/2024/04/18/11/56/ai-generated-8704229_960_720.png')">Cappuccino</div>
+      <div class="coffee-item" onclick="showCoffee('Latte', 'Mild & Creamy', 'Espresso with a lot of steamed milk. $4.75', 'https://upload.wikimedia.org/wikipedia/commons/thumb/d/d8/Caffe_Latte_at_Pulse_Cafe.jpg/1200px-Caffe_Latte_at_Pulse_Cafe.jpg')">Latte</div>
+      <div class="coffee-item" onclick="showCoffee('Americano', 'Simple & Smooth', 'Espresso with hot water. $3.50', 'https://assets.beanbox.com/blog_images/AB7ud4YSE6nmOX0iGlgA.jpeg')">Americano</div>
+      <div class="coffee-item" onclick="showCoffee('Mocha', 'Chocolate Dream', 'Espresso with chocolate and milk. $5.00', 'https://www.folgerscoffee.com/folgers/recipes/_Hero%20Images/Detail%20Pages/6330/image-thumb__6330__schema_image/CafeMocha-hero.61028a28.jpg')">Mocha</div>
+    </div>
+
+    <div id="coffee-info"></div>
+  </div>
+
+  <script>
+    function showCoffee(name, tagline, description, imageUrl) {
+      const infoBox = document.getElementById('coffee-info');
+      infoBox.innerHTML = `
+        <span class="close-btn" onclick="hideCoffee()">×</span>
+        <img src="${imageUrl}" alt="${name}">
+        <div>
+          <h4>${name}</h4>
+          <p><em>${tagline}</em></p>
+          <p>${description}</p>
+        </div>
+      `;
+      infoBox.classList.add('show');
+    }
+
+    function hideCoffee() {
+      document.getElementById('coffee-info').classList.remove('show');
+    }
+  </script>
+</body>
+</html>
